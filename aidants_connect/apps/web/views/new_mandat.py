@@ -55,7 +55,7 @@ def new_mandat(request):
     if request.method == "GET":
         return render(
             request,
-            "aidants_connect_web/new_mandat/new_mandat.html",
+            "web/new_mandat/new_mandat.html",
             {"aidant": aidant, "form": form},
         )
 
@@ -75,7 +75,7 @@ def new_mandat(request):
         else:
             return render(
                 request,
-                "aidants_connect_web/new_mandat/new_mandat.html",
+                "web/new_mandat/new_mandat.html",
                 {"aidant": aidant, "form": form},
             )
 
@@ -96,7 +96,7 @@ def new_mandat_recap(request):
         form = RecapMandatForm(aidant)
         return render(
             request,
-            "aidants_connect_web/new_mandat/new_mandat_recap.html",
+            "web/new_mandat/new_mandat_recap.html",
             {
                 "aidant": aidant,
                 "usager": usager,
@@ -187,7 +187,7 @@ def new_mandat_recap(request):
         else:
             return render(
                 request,
-                "aidants_connect_web/new_mandat/new_mandat_recap.html",
+                "web/new_mandat/new_mandat_recap.html",
                 {
                     "aidant": aidant,
                     "usager": usager,
@@ -207,7 +207,7 @@ def new_mandat_success(request):
 
     return render(
         request,
-        "aidants_connect_web/new_mandat/new_mandat_success.html",
+        "web/new_mandat/new_mandat_success.html",
         {"aidant": aidant, "usager": usager},
     )
 
@@ -226,7 +226,7 @@ def attestation_projet(request):
 
     return render(
         request,
-        "aidants_connect_web/attestation.html",
+        "web/attestation.html",
         {
             "usager": usager,
             "aidant": aidant,
@@ -251,7 +251,7 @@ def attestation_final(request):
 
     return render(
         request,
-        "aidants_connect_web/attestation.html",
+        "web/attestation.html",
         {
             "usager": usager,
             "aidant": aidant,
