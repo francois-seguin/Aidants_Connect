@@ -1,17 +1,13 @@
 from django import forms
-from django.conf import settings
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django.core.exceptions import ValidationError
-from django.core.validators import RegexValidator
+
 from django.forms import EmailField
 from django.utils.translation import gettext_lazy as _
 
-from django_otp import match_token
-
 from aidants_connect import constants
 
-from aidants_connect_web.models import Aidant, Organisation
+from .models import Aidant, Organisation
 
 
 class AidantCreationForm(forms.ModelForm):
@@ -126,12 +122,8 @@ class AidantChangeForm(forms.ModelForm):
 
 
 class MandatForm(forms.Form):
-<<<<<<< HEAD:aidants_connect_web/forms.py
-    DEMARCHES = [(key, value) for key, value in settings.DEMARCHES.items()]
-=======
-
     DEMARCHES = [(key, value) for key, value in constants.DEMARCHES.items()]
->>>>>>> Start splitting monolithic app... [WIP]:aidants_connect/apps/web/forms.py
+
     demarche = forms.MultipleChoiceField(
         choices=DEMARCHES, required=True, widget=forms.CheckboxSelectMultiple
     )
