@@ -58,8 +58,6 @@ if os.getenv("DEBUG") == "True":
 else:
     DEBUG = False
 
-
-# We support a comma-separated list of allowed hosts.
 ENV_SEPARATOR = ","
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(ENV_SEPARATOR)
 
@@ -94,7 +92,7 @@ INSTALLED_APPS = [
 
     # project apps
     "aidants_connect.apps.aidants.apps.AidantsConfig",
-    "aidants_connect.apps.flexauth",  # flex·ible auth·entication
+    "aidants_connect.apps.flexauth.apps.AuthConfig",  # flex·ible auth·entication
     "aidants_connect.apps.logs.apps.LogsConfig",
     "aidants_connect.apps.mandats.apps.MandatsConfig",
     "aidants_connect.apps.usagers.apps.UsagersConfig",
