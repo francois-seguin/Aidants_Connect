@@ -34,7 +34,10 @@
               <a {% if 'faq' in view_name %}class="font-weight-bold"{% endif %} href="{% url 'faq_generale' %}">FAQ</a>
             </li>
             <li class="nav__item">
-              <a class="active" href="{% url 'login' %}">Se connecter</a>
+              <a class="active" href="{% url 'flexauth:register_identity' %}">S'inscrire</a>
+            </li>
+            <li class="nav__item">
+              <a class="active" href="{% url 'two_factor:login' %}">Se connecter</a>
             </li>
 
           {% endif %}

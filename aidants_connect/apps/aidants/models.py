@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.functional import cached_property
 
+from ..flexauth.mixins import WithFlexAuth
 
 
 class Organisation(models.Model):
@@ -48,7 +49,7 @@ class AidantManager(BaseUserManager):
         return self.filter(is_active=True)
 
 
-class Aidant(AbstractUser):
+class Aidant(WithFlexAuth, AbstractUser):
     profession = models.TextField(blank=False)
     organisation = models.ForeignKey(
         Organisation, null=True, on_delete=models.CASCADE, related_name="aidants"
