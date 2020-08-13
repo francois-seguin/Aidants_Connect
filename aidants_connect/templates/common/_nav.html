@@ -6,11 +6,12 @@
       <img class="navbar__gouvfr" src="{% static 'images/Marianne_logo_1120.png' %}" alt="" />
       <img class="navbar__logo" src="{% static 'images/aidants-connect_logo.png' %}"  alt="Aidants Connect" />
     </a>
+
     <nav role="navigation">
       <ul class="nav__links">
 
         {% with view_name=request.resolver_match.view_name %}
-          {% if request.user.is_authenticated %}
+          {% if request.user.is_authenticated and request.user.is_verified %}
 
             <li class="nav__item">
               <a {% if view_name in 'espace_aidant_home,espace_aidant_organisation,usagers,usager_details,usagers_mandats_autorisations_cancel_confirm' %}class="font-weight-bold"{% endif %} href="{% url 'espace_aidant_home' %}">Mon Espace Aidant</a>
@@ -34,10 +35,10 @@
               <a {% if 'faq' in view_name %}class="font-weight-bold"{% endif %} href="{% url 'faq_generale' %}">FAQ</a>
             </li>
             <li class="nav__item">
-              <a class="active" href="{% url 'flexauth:register_identity' %}">S'inscrire</a>
+              <a class="active" href="{% url 'flexauth:register' %}">S'inscrire</a>
             </li>
             <li class="nav__item">
-              <a class="active" href="{% url 'two_factor:login' %}">Se connecter</a>
+              <a class="active" href="{% url 'flexauth:login' %}">Se connecter</a>
             </li>
 
           {% endif %}
