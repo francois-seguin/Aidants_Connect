@@ -9,20 +9,30 @@
 {% endblock extracss %}
 
 {% block content %}
+
   <div class="hero">
     <div class="container hero__container">
       <h1>Récapitulatif du mandat</h1>
     </div>
   </div>
+
   <section class="section section-grey">
     <div class="container container-small">
       <form method="post">
+
         {% if form.errors %}
           <div class="notification error" role="alert">{{ form.errors }}</div>
         {% endif %}
+        {% if form_2fa.errors %}
+          <div class="notification error" role="alert">{{ form_2fa.errors }}</div>
+        {% endif %}
+
         {% csrf_token %}
+
         <a class="button-outline primary small float-right" href="{% url 'new_attestation_projet' %}" target="_blank">Voir le projet de mandat</a>
+
         <h2>Éléments du mandat</h2>
+
         <div class="panel">
           <div class="form__group">
             <div id="recap_text">
@@ -40,13 +50,19 @@
             {% endif %}
           </div>
         </div>
+
         <h2>Validation de l'usager</h2>
+
         {% if form.non_field_errors %}
           <div class="notification error" role="alert">{{ form.non_field_errors }}</div>
         {% endif %}
-        <div class="panel form__group">
-          <div class="margin-bottom-1em">En cochant les cases, <strong>{{ aidant }}</strong> confirme :</div>
-          <div class="checkbox__group margin-bottom-1em">
+        {% if form_2fa.non_field_errors %}
+          <div class="notification error" role="alert">{{ form_2fa.non_field_errors }}</div>
+        {% endif %}
+
+        <div class="panel form__group mandat__agreement">
+          <p>En cochant les cases, <strong>{{ aidant }}</strong> confirme :</p>
+          <div class="checkbox__group">
             <input type="checkbox" id="id_personal_data" name="personal_data" required />
             <label class="label-inline" for="id_personal_data">
               Avoir communiqué à <strong>{{ usager }}</strong> les informations concernant l’objet de l’intervention,
@@ -66,8 +82,10 @@
             </label>
           </div>
         </div>
+
         <h2>Validation de l'aidant</h2>
-        <div class="panel form__group">
+
+        <div class="panel form__group mandat__agreement">
           <fieldset>
             <div class="not_checkbox_group">
               <label for="id_otp_token">{{ form_2fa.second_factor.label_tag }}</label>
@@ -79,6 +97,7 @@
             <input type="submit" class="button" value="Enregistrer le mandat" />
           </div>
         </div>
+
       </form>
     </div>
   </section>
