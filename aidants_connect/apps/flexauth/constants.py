@@ -2,6 +2,11 @@ from django.conf import settings
 from django.db import models
 
 
+REDIRECT_URLS = {
+    'login': 'flexauth:login_second_factor',
+    'restricted_registration': 'flexauth:register_first_factor',
+}
+
 AVAILABLE_FIRST_FACTORS = settings.FLEXAUTH_AVAILABLE_1AF
 NUM_AVAILABLE_FIRST_FACTORS = len(AVAILABLE_FIRST_FACTORS)
 

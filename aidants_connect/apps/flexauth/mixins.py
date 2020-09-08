@@ -69,7 +69,8 @@ class WithFlexAuth(models.Model):
         elif self.second_factor == 'key':
             return self.yubikey_device
 
-    def send_sesame(self, base_url=None, extra_params=None, extra_context=None):
+    def send_sesame(self, context='login', base_url=None,
+                    extra_params=None, extra_context=None):
 
         # Imported here because it triggers a premature
         # import of the custom auth model otherwise...
@@ -80,17 +81,22 @@ class WithFlexAuth(models.Model):
         if extra_params:
             qs_params.update(extra_params)
 
+        try:
+            redirect_url = constants.REDIRECT_URLS[context]
+        except KeyError:
+            raise ValueError("Invalid sesame context: %s" % context)
+
         sesame_url = '%s%s?%s' % (
             base_url,
-            reverse('flexauth:login_second_factor'),  # TODO: try to omit namespace?
+            reverse(redirect_url),
             urlencode(qs_params),
         )
         sesame_ttl_minutes = math.floor(settings.SESAME_MAX_AGE / 60)
 
-        TEMPLATES_PATH = 'flexauth/email'
-        subject_template = '%s/subject.txt' % TEMPLATES_PATH
-        text_body_template = '%s/body.txt' % TEMPLATES_PATH
-        html_body_template = '%s/body.html' % TEMPLATES_PATH
+        templates_path = 'flexauth/email/%s' % context
+        subject_template = '%s/subject.txt' % templates_path
+        text_body_template = '%s/body.txt' % templates_path
+        html_body_template = '%s/body.html' % templates_path
 
         context = {
             'user': self,

@@ -26,7 +26,7 @@ def login_username(request):
             else:
                 first_factor = user.first_factor or first_factor
                 if first_factor == 'email':
-                    user.send_sesame()
+                    user.send_sesame(context='login')
 
             request.session['username'] = username
             return redirect(request.POST.get('next'))

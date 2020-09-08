@@ -8,7 +8,8 @@
 
         <p>Bienvenue parmi nous, {{ new_user.first_name }} ! 👋</p>
         <p>Vous faites partie de l'organisation suivante : <strong>{{ new_user.organisation.name }}</strong></p>
-        <p><a href="{% url 'flexauth:register_first_factor' %}">Cliquez ici</a> pour continuer le processus d'inscription.</p>
+        <p>Nous vous avons envoyé un email pour vérifier que vous avez bien accès à cette adresse de courrier électronique.</p>
+        <p>Cliquez sur le lien contenu dans celui-ci pour continuer le processus d'inscription.</p>
 
     {% else %}
 
