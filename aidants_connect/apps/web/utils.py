@@ -5,6 +5,8 @@ from django.conf import settings
 
 import qrcode
 
+from aidants_connect import constants
+
 
 def generate_sha256_hash(value: bytes):
     """

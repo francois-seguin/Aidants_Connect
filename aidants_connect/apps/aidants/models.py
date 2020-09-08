@@ -13,7 +13,9 @@ class Organisation(models.Model):
     zip_code = models.CharField("Code postal", max_length=32, blank=True)
     city = models.CharField("Ville", max_length=255, blank=True)
 
-    contact_firstname = models.CharField("Prénom du contact", max_length=255, blank=True)
+    contact_firstname = models.CharField(
+        "Prénom du contact", max_length=255, blank=True
+    )
     contact_lastname = models.CharField("Nom du contact", max_length=255, blank=True)
     contact_email = models.EmailField("Adresse email du contact", blank=True)
     contact_phone = PhoneNumberField("Téléphone du contact", blank=True)

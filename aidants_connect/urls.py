@@ -27,7 +27,11 @@ urlpatterns = [
 
     path("dashboard/", aidants_views.dashboard, name="dashboard"),
     path("usagers/", aidants_views.usagers_index, name="usagers"),
-    path("usagers/<int:usager_id>/", aidants_views.usager_details, name="usager_details"),
+    path(
+        "usagers/<int:usager_id>/",
+        aidants_views.usager_details,
+        name="usager_details"
+    ),
     path(
         "usagers/<int:usager_id>/mandats/<int:mandat_id>/autorisations/<int:autorisation_id>/cancel_confirm",  # noqa
         aidants_views.usagers_mandats_autorisations_cancel_confirm,
@@ -40,7 +44,11 @@ urlpatterns = [
     path("authorize/", FC_as_FI_views.authorize, name="authorize"),
     path("token/", FC_as_FI_views.token, name="token"),
     path("userinfo/", FC_as_FI_views.user_info, name="user_info"),
-    path("select_demarche/", FC_as_FI_views.fi_select_demarche, name="fi_select_demarche"),
+    path(
+        "select_demarche/",
+        FC_as_FI_views.fi_select_demarche,
+        name="fi_select_demarche"
+    ),
 
     # FC_as_FS
     path("fc_authorize/", FC_as_FS_views.fc_authorize, name="fc_authorize"),
