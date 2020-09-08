@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 
 
-REDIRECT_URLS = {
+SESAME_REDIRECT_URLS = {
     'login': 'flexauth:login_second_factor',
     'restricted_registration': 'flexauth:register_first_factor',
 }

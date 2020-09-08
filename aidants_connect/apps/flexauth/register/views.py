@@ -48,7 +48,7 @@ def register_identity(request):
                 else:
                     new_user_id = new_user.id
 
-                    # We need to send them an email to validate their identity.
+                    # We need to send them a sesame to validate their identity.
                     new_user.send_sesame(context='restricted_registration')
 
             request.session['new_user_id'] = new_user_id

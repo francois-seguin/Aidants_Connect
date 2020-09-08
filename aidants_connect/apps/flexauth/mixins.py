@@ -77,14 +77,14 @@ class WithFlexAuth(models.Model):
         from sesame.utils import get_parameters as get_sesame_params
 
         base_url = base_url or settings.FLEXAUTH_BASE_URL
-        qs_params = get_sesame_params(self)
-        if extra_params:
-            qs_params.update(extra_params)
-
         try:
-            redirect_url = constants.REDIRECT_URLS[context]
+            redirect_url = constants.SESAME_REDIRECT_URLS[context]
         except KeyError:
             raise ValueError("Invalid sesame context: %s" % context)
+        else:
+            qs_params = get_sesame_params(self)
+            if extra_params:
+                qs_params.update(extra_params)
 
         sesame_url = '%s%s?%s' % (
             base_url,
