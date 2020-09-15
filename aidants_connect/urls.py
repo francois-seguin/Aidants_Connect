@@ -25,7 +25,12 @@ urlpatterns = [
 
     # --- `aidants` app views
 
-    path("dashboard/", aidants_views.dashboard, name="dashboard"),
+    path("espace-aidant/", aidants_views.home, name="espace_aidant_home"),
+    path(
+        "espace-aidant/organisation/",
+        aidants_views.organisation,
+        name="espace_aidant_organisation",
+    ),
     path("usagers/", aidants_views.usagers_index, name="usagers"),
     path(
         "usagers/<int:usager_id>/",

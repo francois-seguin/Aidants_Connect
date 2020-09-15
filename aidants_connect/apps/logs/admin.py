@@ -5,9 +5,9 @@ from .models import Journal
 
 
 class JournalAdmin(ModelAdmin):
-    list_display = ("id", "action", "initiator", "creation_date")
+    list_display = ("id", "action", "aidant", "creation_date")
     list_filter = ("action",)
-    search_fields = ("action", "initiator")
+    search_fields = ("action", "aidant")
     ordering = ("-creation_date",)
 
 

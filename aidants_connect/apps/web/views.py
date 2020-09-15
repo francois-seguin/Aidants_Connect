@@ -30,7 +30,6 @@ def home_page(request):
     return render(request, "web/public/home_page.html")
 
 
-<<<<<<< HEAD:aidants_connect/apps/web/views/service.py
 @login_required
 def logout_page(request):
     logout(request)
@@ -38,7 +37,6 @@ def logout_page(request):
     return redirect(settings.LOGOUT_REDIRECT_URL)
 
 
-=======
 def cgu(request):
     return render(request, "web/public/cgu.html")
 
@@ -59,7 +57,6 @@ def faq_donnees_personnelles(request):
     return render(request, "web/public/faq/donnees_personnelles.html")
 
 
->>>>>>> Dispatch project elements across multiple apps:aidants_connect/apps/web/views.py
 def guide_utilisation(request):
     return render(request, "web/public/guide_utilisation.html")
 

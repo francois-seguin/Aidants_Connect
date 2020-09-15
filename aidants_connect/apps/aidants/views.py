@@ -16,6 +16,39 @@ log = logging.getLogger()
 
 @otp_required
 @login_required
+def home(request):
+    aidant = request.user
+
+    return render(
+        request, "aidants/home.html", {"aidant": aidant},
+    )
+
+
+@otp_required
+@login_required
+def organisation(request):
+    aidant = request.user
+
+    organisation = aidant.organisation
+    if not organisation:
+        django_messages.error(request, "Vous n'êtes pas rattaché à une organisation.")
+        return redirect("espace_aidant_home")
+
+    organisation_active_aidants = organisation.aidants.active()
+
+    return render(
+        request,
+        "aidants/organisation.html",
+        {
+            "aidant": aidant,
+            "organisation": organisation,
+            "organisation_active_aidants": organisation_active_aidants,
+        },
+    )
+
+
+@otp_required
+@login_required
 def usagers_index(request):
     aidant = request.user
     usagers = aidant.get_usagers()

@@ -9,6 +9,8 @@ from django.utils.functional import cached_property
 
 from aidants_connect import constants
 
+from ..aidants.models import Aidant
+
 
 class AutorisationDureeKeywords(models.TextChoices):
     SHORT = (
