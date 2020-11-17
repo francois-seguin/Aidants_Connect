@@ -9,6 +9,8 @@ from django.utils.translation import gettext_lazy as _
 
 from django_otp import match_token
 
+from aidants_connect import constants
+
 from aidants_connect_web.models import Aidant, Organisation
 
 
@@ -124,7 +126,12 @@ class AidantChangeForm(forms.ModelForm):
 
 
 class MandatForm(forms.Form):
+<<<<<<< HEAD:aidants_connect_web/forms.py
     DEMARCHES = [(key, value) for key, value in settings.DEMARCHES.items()]
+=======
+
+    DEMARCHES = [(key, value) for key, value in constants.DEMARCHES.items()]
+>>>>>>> Start splitting monolithic app... [WIP]:aidants_connect/apps/web/forms.py
     demarche = forms.MultipleChoiceField(
         choices=DEMARCHES, required=True, widget=forms.CheckboxSelectMultiple
     )
