@@ -1,8 +1,5 @@
 from django.urls import path
 
-from magicauth import views as magicauth_views
-from magicauth.urls import urlpatterns as magicauth_urls
-
 from aidants_connect_web.views import (
     FC_as_FS,
     id_provider,
@@ -14,7 +11,6 @@ from aidants_connect_web.views import (
 
 urlpatterns = [
     # service
-    path("accounts/login/", magicauth_views.LoginView.as_view(), name="login"),
     path("activity_check/", service.activity_check, name="activity_check"),
     # espace aidant : home, organisation
     path("espace-aidant/", espace_aidant.home, name="espace_aidant_home"),
@@ -84,5 +80,3 @@ urlpatterns = [
         name="faq_donnees_personnelles",
     ),
 ]
-
-urlpatterns.extend(magicauth_urls)
